@@ -1,5 +1,7 @@
 class SearchController < ApplicationController
   def index
-    require 'pry'; binding.pry
+    @nation = params[:nation]
+    @all_members = MemberFacade.get_members(params[:nation])
+    @first_25_members = @all_members[0..24]
   end
 end

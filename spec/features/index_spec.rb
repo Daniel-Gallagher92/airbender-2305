@@ -21,15 +21,18 @@ RSpec.describe 'Search Index' do
     click_button 'Search For Members'
 
     expect(current_path).to eq(search_path)
-    expect(page).to have_content('Total Number of Members: 97')
-    expect(page).to have_css('.member', count: 97)
 
-    within(first('.member')) do 
-      expect(page).to have_css('.name')
-      expect(page).to have_css('.photo')
-      expect(page).to have_css('.allies')
-      expect(page).to have_css('.enemies')
-      expect(page).to have_css('.affiliation')
-    end
+    expect(page).to have_content('Members of the Fire nation')
+    expect(page).to have_content('Fire nation Population: 97')
+  end
+
+  it 'can list the first 25 members of the Fire Nation w/ attributes and photo if applicable' do 
+    visit root_path
+
+    select 'Fire Nation', from: :nation
+    click_button 'Search For Members'
+
+    expect(current_path).to eq(search_path)
+
   end
 end

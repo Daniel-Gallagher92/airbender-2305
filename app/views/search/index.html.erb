@@ -1,1 +1,23 @@
-<h2>Total Members of the </h2>
+<center>
+  <h2>Members of the <%= @nation.gsub("+", " ").capitalize %></h2>
+
+  <h4><%= @nation.gsub("+", " ").capitalize %> Population: <%= @all_members.count %></h4>
+
+  <ul class='member'>
+    <% @first_25_members.each do |member| %>
+      <p><b>Name: </b><%= member.name %></p>
+      <p><img src= <%= member.photo %>></p>
+      <p><b>Allies: </b> <% if member.allies.nil? %>
+                            <%= "None" %>
+                          <% else %>
+                            <%= member.allies %>
+                          <% end %></p>
+      <p><b>Enemies: </b> <% if member.enemies.nil? %>
+                            <%= "None" %>
+                          <% else %>
+                            <%= member.enemies %>
+                          <% end %></p>
+      <p><b>Affiliation: </b><%= member.affiliation %></p>
+  </ul>
+    <% end %>
+</center>
