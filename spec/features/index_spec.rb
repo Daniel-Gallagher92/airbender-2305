@@ -33,6 +33,14 @@ RSpec.describe 'Search Index' do
     click_button 'Search For Members'
 
     expect(current_path).to eq(search_path)
+    expect(page).to have_css('li', count: 25)
 
+    within("#member") do 
+      expect(page).to have_content('Name: Azula')
+      expect(page).to have_css('img')
+      expect(page).to have_content('Allies: Ozai')
+      expect(page).to have_content('Enemies: Iroh')
+      expect(page).to have_content("Affiliation: Azula's team (formerly) Dai Li (formerly) Fire Nation Fire Nation Royal Family Fire Warriors Royal Fire Academy for Girls (formerly)")
+    end
   end
 end
