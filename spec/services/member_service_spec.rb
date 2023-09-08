@@ -13,10 +13,18 @@ RSpec.describe MemberService do
         characters = MemberService.get_members_by_nation('Fire Nation')
         expect(characters).to be_an(Array)
         expect(characters.count).to eq(97)
+
         expect(characters.first).to have_key(:name)
+        expect(characters[0][:name]).to be_a(String)
+
         expect(characters.first).to have_key(:allies)
+        expect(characters[0][:allies]).to be_an(Array)
+
         expect(characters.first).to have_key(:enemies)
+        expect(characters[0][:enemies]).to be_an(Array)
+        
         expect(characters.first).to have_key(:affiliation)
+        expect(characters[0][:affiliation]).to be_a(String)
       end
     end
   end
